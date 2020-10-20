@@ -5,7 +5,7 @@ function add(param1: number, param2: number): number {
 function add2(param1: number[]): number {
   let res = 0
   param1.forEach((number) => {
-    res = number + res
+    res = add(number, res)
   })
   return res
 }
