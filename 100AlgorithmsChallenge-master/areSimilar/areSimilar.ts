@@ -1,5 +1,5 @@
 function areSimilar(a: number[], b: number[]): boolean {
-   
+   //start
 }
 
 console.log(areSimilar([1, 2, 3], [1, 2, 3]));
