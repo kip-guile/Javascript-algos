@@ -1,17 +1,18 @@
 function arrayPreviousLess(items: number[]): number[] {
-    let newArr = []
+    let newArr = [...items]
     for (let i = 0; i < items.length; i++) {
-        if (i = 0) {
-            newArr.push(-1)
-            continue
+        if (i === 0) {
+            newArr[i] = -1
+             continue
         }
-        for (let j = i-1; j < 1; j-=1) {
+        for (let j = i-1; j >= 0; j--) {
             if (items[j] === -1) {
                 continue
             } else if (items[i] > items[j]) {
-                newArr.push(items[j])
+                newArr[i] = items[j]
+                break
             } else {
-                items[i] = -1
+                newArr[i] = -1
             }
         }        
     }
