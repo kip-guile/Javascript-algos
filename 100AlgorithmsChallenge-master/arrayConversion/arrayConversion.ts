@@ -11,7 +11,7 @@ function arrayConversion(inputArray: number[]): number {
      for (let i = 0; i < second.length; i++) {
         res += second[i]
     }
-    console.log(first, second)
+
     return res
 }
 
