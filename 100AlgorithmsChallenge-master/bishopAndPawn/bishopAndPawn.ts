@@ -1,14 +1,19 @@
 function bishopAndPawn(bishop: string, pawn: string): boolean {
-    let alphaWeights = {}
-    let bishopArr = bishop.split('')
-    let pawnArr = pawn.split('')
-    'abcdefghijklmnopqrstuvwxyz'.split('').forEach((letter, i) => {
-        alphaWeights[letter] = i + 1
+    let board = {}
+    'abcdefgh'.split('').forEach((letter, i) => {
+        board[letter] = i + 1
     })
-    console.log(alphaWeights[pawnArr[0]], parseInt(pawnArr[1]))
-    if (alphaWeights[pawnArr[0]] === parseInt(pawnArr[1])) {
+
+    const bishopX = board[bishop[0]]
+    const bishopY = parseInt(bishop[1])
+    const pawnX = board[bishop[0]]
+    const pawnY = parseInt(pawn[1])
+    
+    if (bishopX + bishopY === pawnY + pawnX || bishopX + bishopY === pawnX + bishopY) {
+        console.log(bishopX + bishopY, pawnY + pawnX, 'or', bishopX + bishopY, pawnX + bishopY)
         return true
     }
+
     return false
 }
 
