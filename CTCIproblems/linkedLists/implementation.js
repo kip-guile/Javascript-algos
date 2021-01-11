@@ -74,6 +74,35 @@ class LinkedList {
     console.log(current.data)
   }
 
+  //Remove from head
+  removeFromHead() {
+    if (this.size <= 1) {
+      return null
+    }
+    let current = this.head
+    this.head = current.next
+    this.size -= 1
+  }
+
+  // Remove from tail
+  removeLast() {
+    let current = this.head
+    if (!current) {
+      return null
+    }
+    if (this.size <= 1) {
+      this.head = null
+      return this.head
+    }
+    let prev
+    while (current.next) {
+      prev = current
+      current = current.next
+    }
+    prev.next = null
+    this.size -= 1
+  }
+
   // Remove at index
   removeAtIndex(index) {
     // if index is out of range
@@ -107,6 +136,57 @@ class LinkedList {
     this.size = 0
   }
 
+  //Check if list contains value
+  contains(value) {
+    let current = this.head
+    if (!current) {
+      return null
+    }
+    while (current) {
+      if (current.data === value) {
+        console.log(true)
+        return
+      }
+      current = current.next
+    }
+    console.log(false)
+    return
+  }
+
+  // get max value
+  getMax() {
+    let current = this.head
+    if (!current) {
+      return null
+    }
+    let max = current.data
+    while (current) {
+      let newData = current.data
+      if (newData > max) {
+        max = newData
+      }
+      current = current.next
+    }
+    return max
+  }
+
+  // get min value
+  getMin() {
+    let current = this.head
+    if (!current) {
+      return null
+    }
+    let min = current.data
+    while (current) {
+      let newData = current.data
+      if (newData < min) {
+        min = newData
+      }
+      current = current.next
+    }
+    return min
+  }
+
   //Print list data
   printListData() {
     let current = this.head
@@ -126,8 +206,14 @@ ll.insertFirst(300)
 ll.insertFirst(400)
 ll.insertLast(500)
 ll.insertAtIndex(700, 2)
-// ll.getAtIndex(0)
+
+ll.getAtIndex(0)
 ll.removeAtIndex(2)
-ll.clearList()
+ll.removeFromHead()
+ll.removeLast()
+
+ll.contains(500)
+console.log(ll.getMax())
+console.log(ll.getMin())
 
 ll.printListData()
