@@ -103,11 +103,47 @@ class DoublyLinkeDList {
     let current = this.head
     let list = []
     while (current) {
-      console.log(current)
       list.push(current.data)
       current = current.next
     }
-    console.log(list, 'size: ' + this.size)
+    console.log(this, list, 'size: ' + this.size)
+  }
+}
+
+class RingBuffer {
+  constructor(size) {
+    this.storage = new DoublyLinkeDList()
+    this.maxSize = size
+    this.current = null
+  }
+
+  append(data) {
+    if (this.storage.size < 1) {
+      this.storage.insertFirst(data)
+      this.current = this.storage.head
+    } else if (this.storage.size < this.maxSize) {
+      this.storage.insertToTail(data)
+      this.current = this.current.next
+    } else {
+      if (!this.current) {
+        this.storage.removeFromHead()
+        this.storage.insertFirst(data)
+        this.current = this.storage.head
+      } else {
+        this.storage.insertLast(data)
+        // to be continued
+      }
+    }
+  }
+
+  get() {
+    let list = []
+    let current = this.storage.head
+    while (current) {
+      list.push(current.data)
+      current = current.next
+    }
+    return list
   }
 }
 

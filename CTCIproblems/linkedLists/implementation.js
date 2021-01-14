@@ -187,6 +187,29 @@ class LinkedList {
     return min
   }
 
+  reverse() {
+    let current = this.head
+    let prev = null
+    let next = null
+    while (current) {
+      next = current.next
+      current.next = prev
+      prev = current
+      current = next
+    }
+    this.head = prev
+  }
+
+  reverseRecursively(head = this.head) {
+    if (head == null || head.next == null) {
+      return head
+    }
+    let reverseListHead = this.reverseRecursively(head.next)
+    head.next.next = head
+    head.next = null
+    return reverseListHead
+  }
+
   //Print list data
   printListData() {
     let current = this.head
@@ -198,22 +221,63 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList()
-ll.insertLast(600)
-ll.insertFirst(100)
-ll.insertFirst(200)
-ll.insertFirst(300)
-ll.insertFirst(400)
-ll.insertLast(500)
-ll.insertAtIndex(700, 2)
+// class RingBuffer {
+//   constructor(size) {
+//     this.storage = new LinkedList()
+//     this.maxSize = size
+//   }
 
-ll.getAtIndex(0)
-ll.removeAtIndex(2)
-ll.removeFromHead()
-ll.removeLast()
+//   append(data) {
+//     if (this.storage.size === this.maxSize) {
+//       this.storage.removeFromHead()
+//       this.storage.insertFirst(data)
+//     } else {
+//       this.storage.insertLast(data)
+//     }
+//   }
 
-ll.contains(500)
-console.log(ll.getMax())
-console.log(ll.getMin())
+//   get() {
+//     let list = []
+//     let current = this.storage.head
+//     while (current) {
+//       list.push(current.data)
+//       current = current.next
+//     }
+//     return list
+//   }
+// }
 
-ll.printListData()
+// const ll = new LinkedList()
+// ll.insertLast(600)
+// ll.insertFirst(100)
+// ll.insertFirst(200)
+// ll.insertFirst(300)
+// ll.insertFirst(400)
+// ll.insertLast(500)
+// ll.insertAtIndex(700, 2)
+
+// ll.getAtIndex(0)
+// ll.removeAtIndex(2)
+// ll.removeFromHead()
+// ll.removeLast()
+
+// ll.contains(500)
+// console.log(ll.getMax())
+// console.log(ll.getMin())
+// ll.reverse()
+// console.log(ll.reverseRecursively())
+
+// ll.printListData()
+
+// let buffer = new RingBuffer(3)
+// buffer.append('a')
+// buffer.append('b')
+// buffer.append('c')
+
+// console.log(buffer.get())
+
+// buffer.append('d')
+
+// console.log(buffer.get())
+
+module.exports = { LinkedList }
