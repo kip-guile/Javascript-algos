@@ -1,3 +1,5 @@
+const { ll } = require('./implementation')
+
 // reverse list
 var reverseList = function (head) {
   let current = head
@@ -33,3 +35,22 @@ var middleNode = function (head) {
   }
   return p1
 }
+
+// delete duplicates from sorted linked list
+var deleteDuplicates = function (head) {
+  let curr = head
+  if (!curr) {
+    return head
+  }
+  while (curr.next) {
+    if (curr.val === curr.next.val) {
+      curr.next = curr.next.next
+    } else {
+      curr = curr.next
+    }
+  }
+  return head
+}
+
+console.log(ll.printListData())
+console.log()

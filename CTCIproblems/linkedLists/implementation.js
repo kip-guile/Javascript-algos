@@ -247,14 +247,14 @@ class LinkedList {
 //   }
 // }
 
-// const ll = new LinkedList()
-// ll.insertLast(600)
-// ll.insertFirst(100)
-// ll.insertFirst(200)
-// ll.insertFirst(300)
-// ll.insertFirst(400)
-// ll.insertLast(500)
-// ll.insertAtIndex(700, 2)
+const ll = new LinkedList()
+ll.insertLast(600)
+ll.insertFirst(100)
+ll.insertFirst(200)
+ll.insertFirst(300)
+ll.insertFirst(400)
+ll.insertLast(500)
+ll.insertAtIndex(700, 2)
 
 // ll.getAtIndex(0)
 // ll.removeAtIndex(2)
@@ -280,4 +280,4 @@ class LinkedList {
 
 // console.log(buffer.get())
 
-module.exports = { LinkedList }
+module.exports = { LinkedList, ll }
