@@ -255,6 +255,8 @@ ll.insertFirst(300)
 ll.insertFirst(400)
 ll.insertLast(500)
 ll.insertAtIndex(700, 2)
+ll.insertFirst(100)
+ll.insertFirst(200)
 
 // ll.getAtIndex(0)
 // ll.removeAtIndex(2)
@@ -280,4 +282,4 @@ ll.insertAtIndex(700, 2)
 
 // console.log(buffer.get())
 
-module.exports = { LinkedList, ll }
+module.exports = { LinkedList, ll, Node }
