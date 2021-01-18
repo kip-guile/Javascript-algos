@@ -1,4 +1,11 @@
-const { ll, LinkedList, Node } = require('./implementation')
+const {
+  ll,
+  LinkedList,
+  Node,
+  first,
+  second,
+  palindrome,
+} = require('./implementation')
 
 // reverse list
 var reverseList = function (head) {
@@ -143,18 +150,115 @@ const partitionaroundX = (head, x) => {
   valueNode.next = headTwo
   if (!curr2) {
     return valueNode
-  } else {
-    while (curr2.next) {
-      curr2 = curr2.next
-    }
   }
-  curr2.next = valueNode
+  prevOne.next = valueNode
 
   return headOne
 }
 
+const padList = (headToPad, n) => {
+  let nullNode = new Node(0)
+  for (let i = 0; i < n; i++) {
+    nullNode.next = headToPad
+    headToPad = nullNode
+  }
+  return headToPad
+}
+const countNode = (list) => {
+  let count = 0
+  let curr = list
+  while (curr) {
+    count += 1
+    curr = curr.next
+  }
+  return count
+}
+
+const addReversedLists = (headOne, headTwo) => {
+  let countList1 = countNode(headOne)
+  let countList2 = countNode(headTwo)
+  if (countList1 > countList2) {
+    headTwo = padList(headTwo, countList1 - countList2)
+  } else if (countList2 > countList1) {
+    headOne = padList(headOne, countList2 - countList1)
+  }
+  let curr = headOne
+  let curr2 = headTwo
+  let remainder = 0
+  let resHead = null
+  let prev = null
+  while (curr && curr2) {
+    let sum = remainder + curr.data + curr2.data
+    let stringed = sum.toString()
+    if (stringed.length > 1) {
+      remainder = parseInt(stringed[0])
+      let newNode = new Node(parseInt(stringed[1]))
+      if (!resHead) {
+        resHead = newNode
+        prev = resHead
+      } else {
+        prev.next = newNode
+        prev = newNode
+      }
+    } else {
+      remainder = 0
+      let newNode = new Node(parseInt(stringed[0]))
+      if (!resHead) {
+        resHead = newNode
+        prev = resHead
+      } else {
+        prev.next = newNode
+        prev = newNode
+      }
+    }
+    curr = curr.next
+    curr2 = curr2.next
+  }
+  if (remainder !== 0) {
+    list.push(remainder)
+    prev.next = new Node(remainder)
+  }
+  return print(resHead)
+}
+
+const reverseTheList = (headie) => {
+  console.log('head', print(headie))
+  let curr = headie
+  let prev = null
+  while (curr) {
+    let next = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next
+  }
+  return prev
+}
+
+const isPalindrome = (head) => {
+  let slow = head
+  let fast = head
+  while (fast && fast.next) {
+    slow = slow.next
+    fast = fast.next.next
+  }
+  slow = reverseTheList(slow)
+  console.log('rev', print(slow))
+  console.log('head', print(head))
+  while (slow) {
+    console.log(head.data, slow.data)
+    if (head.data !== slow.data) {
+      return false
+    }
+    head = head.next
+    slow = slow.next
+  }
+  return true
+}
+
+console.log(isPalindrome(palindrome.head))
+// console.log(addReversedLists(first.head, second.head))
 // console.log(ll)
-const reversed = reverseList(ll.head)
+// const reversed = reverseList(ll.head)
 // console.log(print(reversed))
 // console.log(reversed)
 // console.log(middleNode(reversed))
@@ -163,4 +267,4 @@ const reversed = reverseList(ll.head)
 // console.log('findkth', findkthToLastNode(reversed, 2))
 // const mid = middleNode(reversed)
 // console.log(deleteMidleNodeGivenMiddleNode(mid))
-console.log(print(partitionaroundX(reversed, 50)))
+// console.log(print(partitionaroundX(reversed, 750)))

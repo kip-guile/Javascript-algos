@@ -247,7 +247,24 @@ class LinkedList {
 //   }
 // }
 
+const palindrome = new LinkedList()
 const ll = new LinkedList()
+const first = new LinkedList()
+const second = new LinkedList()
+palindrome.insertLast('t')
+palindrome.insertLast('t')
+palindrome.insertLast('e')
+palindrome.insertLast('n')
+palindrome.insertLast('e')
+palindrome.insertLast('t')
+palindrome.insertLast('t')
+// palindrome.insertLast('t')
+first.insertLast(7)
+first.insertLast(1)
+first.insertLast(6)
+second.insertLast(5)
+second.insertLast(9)
+second.insertLast(5)
 ll.insertLast(600)
 ll.insertFirst(100)
 ll.insertFirst(200)
@@ -282,4 +299,4 @@ ll.insertFirst(200)
 
 // console.log(buffer.get())
 
-module.exports = { LinkedList, ll, Node }
+module.exports = { LinkedList, ll, Node, first, second, palindrome }
