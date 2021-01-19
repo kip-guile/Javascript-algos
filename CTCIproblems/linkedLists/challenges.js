@@ -255,6 +255,19 @@ const isPalindrome = (head) => {
   return true
 }
 
+var hasCycle = function (head) {
+  let fast = head
+  let slow = head
+  while (slow && fast && fast.next) {
+    slow = slow.next
+    fast = fast.next.next
+    if (slow === fast) {
+      return true
+    }
+  }
+  return false
+}
+
 console.log(isPalindrome(palindrome.head))
 // console.log(addReversedLists(first.head, second.head))
 // console.log(ll)
