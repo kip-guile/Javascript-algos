@@ -281,6 +281,7 @@ var getIntersectionNode = function (headA, headB) {
     if (!hash[p1.val]) {
       hash[p1.val] = p1
     } else {
+      // doing this because we dont want to ovewrite a previous key
       hash['second'] = p1
     }
     p1 = p1.next
@@ -292,6 +293,28 @@ var getIntersectionNode = function (headA, headB) {
     p2 = p2.next
   }
   return null
+}
+
+// remove all instances of a value in a linked list
+var removeElements = function (head, val) {
+  let curr = head
+  let prev = null
+  while (curr) {
+    if (curr.val === val) {
+      if (!prev) {
+        curr = head.next
+        head = head.next
+        continue
+      } else {
+        prev.next = curr.next
+        curr = curr.next
+      }
+    } else {
+      prev = curr
+      curr = curr.next
+    }
+  }
+  return head
 }
 
 console.log(isPalindrome(palindrome.head))
