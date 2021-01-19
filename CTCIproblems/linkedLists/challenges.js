@@ -174,6 +174,7 @@ const countNode = (list) => {
   return count
 }
 
+// add reversed lists
 const addReversedLists = (headOne, headTwo) => {
   let countList1 = countNode(headOne)
   let countList2 = countNode(headTwo)
@@ -221,6 +222,7 @@ const addReversedLists = (headOne, headTwo) => {
   return print(resHead)
 }
 
+// reverse linked list
 const reverseTheList = (headie) => {
   console.log('head', print(headie))
   let curr = headie
@@ -234,6 +236,7 @@ const reverseTheList = (headie) => {
   return prev
 }
 
+// check if linked list is a palindrome
 const isPalindrome = (head) => {
   let slow = head
   let fast = head
@@ -255,6 +258,7 @@ const isPalindrome = (head) => {
   return true
 }
 
+// check if linked list has a loop
 var hasCycle = function (head) {
   let fast = head
   let slow = head
@@ -266,6 +270,28 @@ var hasCycle = function (head) {
     }
   }
   return false
+}
+
+// find intersection of two linked lists
+var getIntersectionNode = function (headA, headB) {
+  let hash = {}
+  let p1 = headA
+  let p2 = headB
+  while (p1) {
+    if (!hash[p1.val]) {
+      hash[p1.val] = p1
+    } else {
+      hash['second'] = p1
+    }
+    p1 = p1.next
+  }
+  while (p2) {
+    if (hash[p2.val] == p2 || hash['second'] == p2) {
+      return p2
+    }
+    p2 = p2.next
+  }
+  return null
 }
 
 console.log(isPalindrome(palindrome.head))
