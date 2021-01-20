@@ -317,6 +317,23 @@ var removeElements = function (head, val) {
   return head
 }
 
+// return decimal number of binary linked list
+var getDecimalValue = function (head) {
+  let weight = 1
+  let curr = head
+  let binary = 0
+  let reversed = reverse(head)
+
+  while (reversed !== null) {
+    if (reversed.val === 1) {
+      binary += weight
+    }
+    weight = weight * 2
+    reversed = reversed.next
+  }
+  return binary
+}
+
 console.log(isPalindrome(palindrome.head))
 // console.log(addReversedLists(first.head, second.head))
 // console.log(ll)
