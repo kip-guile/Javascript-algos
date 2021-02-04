@@ -334,6 +334,34 @@ var getDecimalValue = function (head) {
   return binary
 }
 
+var removeNthFromEnd = function (head, n) {
+  if (!head.next && n == 1) {
+    return null
+  }
+  let count = 0
+  let curr = head
+  while (curr) {
+    count += 1
+    curr = curr.next
+  }
+
+  if (count == n) {
+    head = head.next
+    return head
+  }
+  let nodetoremove = count - n
+  let newcurr = head
+  let prev = null
+  let newcount = 0
+  while (newcount !== nodetoremove) {
+    newcount += 1
+    prev = newcurr
+    newcurr = newcurr.next
+  }
+  prev.next = newcurr.next
+  return head
+}
+
 console.log(isPalindrome(palindrome.head))
 // console.log(addReversedLists(first.head, second.head))
 // console.log(ll)
