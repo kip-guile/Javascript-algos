@@ -45,18 +45,43 @@ const permutationCheck = (string1, string2) => {
 
 // console.log(permutationCheck('strungss', 'trungsss'))
 
-const replaceSpace = (string) => {
+const replaceSpace = (n, s) => {
   let fill = '%20'
-  let arr = string.split('')
-  arr.forEach((char, i) => {
-    if (char == ' ') {
+  let arr = s.split('')
+  for (let i = 0; i < arr.length; i++) {
+    if (i === n) {
+      break
+    }
+    if (arr[i] == ' ') {
       arr[i] = fill
     }
-  })
+  }
   return arr.join('')
 }
 
 // console.log(replaceSpace('Mr John Smith'))
+
+function palindromePermutation(s) {
+  // basically if more than one char is appears an odd number of times, it cant be a palindrome
+  let oddCount = 0
+  let hash = {}
+  for (let i = 0; i < s.length; i++) {
+    if (hash[s[i]]) {
+      hash[s[i]] += 1
+    } else {
+      hash[s[i]] = 1
+    }
+  }
+  for (const k in hash) {
+    if (hash[k] % 2 !== 0) {
+      oddCount += 1
+    }
+  }
+  if (oddCount > 1) {
+    return 'NO'
+  }
+  return 'YES'
+}
 
 const stringCompression = (string) => {
   let currChar = string[1]
