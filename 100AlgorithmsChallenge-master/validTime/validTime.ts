@@ -13,10 +13,12 @@ function validTime(time: string): boolean {
       }
     }
   }
-  if (parseInt(h) > 24 || parseInt(h) < 0) {
-    return false
-  }
-  if (parseInt(m) > 60 || parseInt(h) < 0) {
+  if (
+    parseInt(h) > 24 ||
+    parseInt(h) < 0 ||
+    parseInt(m) > 60 ||
+    parseInt(h) < 0
+  ) {
     return false
   }
 
@@ -24,5 +26,5 @@ function validTime(time: string): boolean {
 }
 
 console.log(validTime('13:58'))
-console.log(validTime('25:51'))
-console.log(validTime('02:76'))
+console.log(validTime('05:51'))
+console.log(validTime('22:00'))
