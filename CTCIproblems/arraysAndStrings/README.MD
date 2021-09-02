@@ -1,3 +1,11 @@
+Lookup, push, pop for arrays is O(1)
+- push could potentially become O(n) because JS might assign a smaller space for the array
+Shift and unshift for arrays is O(n)
+Splices are O(n)
+inserts and deletes are O(n)
+
+Javascript uses dynamic arrays, instead of static arrays.
+
 1. Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 2. Implement a function void reverse(char\* str) in C or C++ which reverses a null- terminated string.
@@ -15,3 +23,5 @@
 7. Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
 
 8. Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s i and s2, write code to check if s2 is a rotation of si using only one call to isSubstring (e.g.,"waterbottle"is a rota- tion of"erbottlewat").
+
+9. Reverse a string.
